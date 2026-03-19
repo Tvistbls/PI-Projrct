@@ -1,0 +1,25 @@
+import asyncio
+from aiogram import Bot, Dispatcher, Router
+
+
+Tooken = '8006838363:AAGmDZt5_zobG7vJ4jHpuAo2441tJzxB_tI'
+
+router = Router()
+@router.message()
+async def start(message):
+    await message.answer("hello!")
+
+
+async def main():
+    bot=Bot(token=Tooken)
+    dp = Dispatcher()
+
+    dp.include_router(router)
+    await dp.start_polling(bot)
+
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("бот остановлен")
